@@ -1,0 +1,33 @@
+    <div id="userDetails">
+      <div>Name: {{ user.name }}</div>
+      <div>Location: {{ user.location }} </div>
+      <br />
+      <div>
+        <img ng-src="{{ user.avatar_url }}" title="{{ user.name }}">
+      </div>
+      <br /> 
+      Order:
+      <select ng-model="repoSortOrder">
+        <option value="+name">Name (Ascending)</option>
+        <option value="-name">Name (Descending)</option>
+        <option value="+language">Language (Ascending)</option>
+        <option value="-language">Language (Descending)</option>
+      </select>
+    </div>
+    <br />
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Lanugage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="repo in repos| orderBy:repoSortOrder">
+            <td>{{ repo.name }}</td>
+            <td>{{ repo.language }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
